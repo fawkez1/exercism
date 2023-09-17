@@ -54,10 +54,10 @@ export function frontDoorPassword(word) {
 
 // write a loop that gets the last character of each line
 export function backDoorResponse(line) {
-  for (let i=0; i < line.length, i++) {
-    line[i] = line.slice(-0);
+  return (line.trim()).slice(-1);
+
   }
-}
+
 
 /**
  * Format the password for the back door, given the response
@@ -67,5 +67,5 @@ export function backDoorResponse(line) {
  * @returns {string} the back door password
  */
 export function backDoorPassword(word) {
-  throw new Error('Remove this line and implement the function');
+  return word[0].toUpperCase() + word.substring(1) + ", please"
 }
