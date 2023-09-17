@@ -6,6 +6,9 @@
 // understand types, JSDoc, or TypeScript in order to complete this JavaScript
 // exercise, and can completely ignore this comment block and directive.
 
+import { AsymmetricMatcher } from "expect";
+import { arch } from "os";
+
 // 👋🏽 Hi again!
 //
 // A quick reminder about exercise stubs:
@@ -27,7 +30,7 @@
  * @return {boolean} Whether or not you can execute a fast attack.
  */
 export function canExecuteFastAttack(knightIsAwake) {
-  throw new Error('Remove this line and implement the function');
+  return !knightIsAwake;
 }
 
 /**
@@ -40,7 +43,30 @@ export function canExecuteFastAttack(knightIsAwake) {
  * @returns {boolean} Whether or not you can spy on someone.
  */
 export function canSpy(knightIsAwake, archerIsAwake, prisonerIsAwake) {
-  throw new Error('Remove this line and implement the function');
+  // all awake
+  if (knightIsAwake && archerIsAwake && prisonerIsAwake) {
+    return true;
+  }
+  // all asleep
+  else if (!knightIsAwake && !archerIsAwake && !prisonerIsAwake) {
+    return false;
+  }
+  // only prisoner is awake
+  else if (!knightIsAwake && !archerIsAwake && prisonerIsAwake) {
+  return true;
+  }
+  // only archer is awake
+  else if (!knightIsAwake && archerIsAwake && !prisonerIsAwake) {
+  return true;
+  }
+  // only archer and knight are awake
+  else if ((knightIsAwake || archerIsAwake) && !prisonerIsAwake) {
+  return true;
+  }
+  // only acher and knight are asleep
+  else if ((!knightIsAwake || !archerIsAwake) && prisonerIsAwake) {
+  return true;
+}
 }
 
 /**
@@ -52,7 +78,12 @@ export function canSpy(knightIsAwake, archerIsAwake, prisonerIsAwake) {
  * @returns {boolean} Whether or not you can send a signal to the prisoner.
  */
 export function canSignalPrisoner(archerIsAwake, prisonerIsAwake) {
-  throw new Error('Remove this line and implement the function');
+  if (!archerIsAwake && prisonerIsAwake){
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 /**
@@ -69,7 +100,25 @@ export function canFreePrisoner(
   knightIsAwake,
   archerIsAwake,
   prisonerIsAwake,
-  petDogIsPresent,
-) {
-  throw new Error('Remove this line and implement the function');
-}
+  petDogIsPresent,) {
+    // dog is present, prisoner awake, archer is asleep
+    if (petDogIsPresent && prisonerIsAwake && !archerIsAwake){
+      return true;
+    }
+    // no dog, prisoner is awake, archer & knight are asleep
+    else if (prisonerIsAwake && !archerIsAwake && !knightIsAwake){
+      return true;
+    }
+    // dog is present and everyone is asleep
+    else if (petDogIsPresent && !prisonerIsAwake && !archerIsAwake && !knightIsAwake){
+      return true;
+    }
+    // dog is present and only knight is awake 
+    else if (petDogIsPresent && !prisonerIsAwake && !archerIsAwake && knightIsAwake){
+      return true;
+    }
+    // else
+    else {
+      return false;
+    }
+  }
