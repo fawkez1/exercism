@@ -24,12 +24,8 @@ case "All or Nothing":
   return 5;
 default:
    return 2.5;
-
-
-
-  }
-  
 }
+  }
 
 /**
  * Calculates the number of limes that need to be cut
@@ -40,7 +36,30 @@ default:
  * @returns {number} number of limes cut
  */
 export function limesToCut(wedgesNeeded, limes) {
-  throw new Error('Please implement the limesToCut function');
+
+let i = 0;
+let wedges = 0;
+let totalWedges = 0;
+
+while ((i < limes.length) && (totalWedges <= wedgesNeeded) && (wedgesNeeded > 0)){
+
+switch (limes[i]) {
+  case 'small':
+    wedges = 6;
+    break;
+  case 'medium':
+    wedges = 8;
+    break;
+  case 'large':
+    wedges = 10;
+    break;
+  default:
+    wedges = 0;
+}
+totalWedges += wedges;
+i++;
+}
+  return i;
 }
 
 /**
