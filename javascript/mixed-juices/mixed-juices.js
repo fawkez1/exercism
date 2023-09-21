@@ -70,5 +70,24 @@ i++;
  * @returns {string[]} remaining orders after the time is up
  */
 export function remainingOrders(timeLeft, orders) {
-  throw new Error('Please implement the remainingOrders function');
+let i = 0;
+let ordersLeft = '';
+let ordersForMei = '';
+let ordersInNumbers = 0;
+
+
+while (i < orders.length && ordersInNumbers < timeLeft) {
+  // convert order[0] in number and compare to timeLeft
+  // check if orders[0] is bigger than timeLeft
+    // if yes, then return:
+      // ordersLeft = orders[i] - orders[0] 
+    // if no, then:
+      // while orders[i] < timeLeft 
+      // switch orders[i]
+      // case : 'Energizer'
+      // ordersInTime = 1.5;
+      
+      
+}
+i++;
 }
