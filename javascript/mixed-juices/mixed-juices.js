@@ -4,6 +4,8 @@
 // the @ts-check directive. It will give you helpful autocompletion when
 // implementing this exercise.
 
+import { time } from "console";
+
 /**
  * Determines how long it takes to prepare a certain juice.
  *
@@ -71,23 +73,44 @@ i++;
  */
 export function remainingOrders(timeLeft, orders) {
 let i = 0;
-let ordersLeft = '';
-let ordersForMei = '';
-let ordersInNumbers = 0;
+let totalOrdersInMinutes = 0;
 
 
-while (i < orders.length && ordersInNumbers < timeLeft) {
-  // convert order[0] in number and compare to timeLeft
-  // check if orders[0] is bigger than timeLeft
-    // if yes, then return:
-      // ordersLeft = orders[i] - orders[0] 
-    // if no, then:
-      // while orders[i] < timeLeft 
-      // switch orders[i]
-      // case : 'Energizer'
-      // ordersInTime = 1.5;
-      
+while (i < orders.length && totalOrdersInMinutes < timeLeft) {
+  let orderTime = 0;
+
+  switch (orders[i]) {
+    case 'Pure Strawberry Joy':
+      orderTime = 0.5;
+      break;
+
+      case 'Energizer':
+      case 'Green Garden':
+      orderTime = 1.5;
+      break;
+
+      case 'Tropical Island':
+      orderTime = 3;
+      break;
+
+      case 'All or Nothing':
+      orderTime = 5;
+      break;
+
+      default: 
+      orderTime =  2.5;
       
 }
-i++;
+if (totalOrdersInMinutes <= timeLeft){
+  totalOrdersInMinutes += orderTime;
+  i++;
+} else {
+  
+  break;
+} 
 }
+const ordersLeft = orders.slice(i);
+return ordersLeft;
+}
+
+
