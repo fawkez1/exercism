@@ -47,5 +47,12 @@ else return false;
  * @returns {string} error message
  */
 export function errorMessage(input) {
-  throw new Error('Implement the errorMessage function');
+  if (Number(input)){
+    return "";
+  }
+  else if (input == "" || input === null || input === undefined){
+    return 'Required field';
+  }
+  
+  else return "Must be a number besides 0";
 }
