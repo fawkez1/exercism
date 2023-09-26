@@ -8,7 +8,20 @@
  * @returns {number} sum of the two arrays
  */
 export function twoSum(array1, array2) {
-  throw new Error('Implement the twoSum function');
+  let sumOne = '';
+  let sumTwo = '';
+  let result = 0;
+
+  for (let i = 0; (i < array1.length); i++){
+    sumOne += +array1[i];
+  }
+  for (let i = 0; (i < array2.length); i++){
+    sumTwo += +array2[i];
+    }
+
+  result = parseInt(sumOne) + parseInt(sumTwo);
+  return result;
+
 }
 
 /**
@@ -18,7 +31,12 @@ export function twoSum(array1, array2) {
  * @returns {boolean} whether the number is a palindrome or not
  */
 export function luckyNumber(value) {
-  throw new Error('Implement the luckyNumber function');
+  let stringNumber = String(value); //'1337'
+  let reversedString = stringNumber.split("").reverse().join("");
+if (stringNumber === reversedString){
+  return true;
+}
+else return false;
 }
 
 /**
