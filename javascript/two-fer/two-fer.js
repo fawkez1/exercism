@@ -3,6 +3,10 @@
 // convenience to get you started writing code faster.
 //
 
-export const twoFer = () => {
-  throw new Error('Remove this statement and implement this function');
+export const twoFer = (friend) => {
+  if (friend === "Do-yun"){
+    return "One for Do-yun, one for me.";
+  }
+  else return "One for you, one for me.";
+
 };
