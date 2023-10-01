@@ -66,5 +66,16 @@ export function composeTransform(f, g) {
  *  if the arguments are the same on subsequent calls, or compute a new result if they are different.
  */
 export function memoizeTransform(f) {
-  throw new Error('Implement the memoizeTransform function');
+  let memoization = null; // Hier wird das zwischengespeicherte Ergebnis gespeichert
+
+  return function calculation(x, y) {
+    if (memoization === null || memoization[0] !== x || memoization[1] !== y) {
+      // Berechne das Ergebnis von f(x, y) nur, wenn es nicht bereits zwischengespeichert ist
+      memoization = [x, y, f(x, y)];
+    }
+
+    return memoization[2]; // Gib das zwischengespeicherte Ergebnis zurück
+  };
 }
+
+
