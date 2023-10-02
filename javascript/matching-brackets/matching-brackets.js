@@ -3,9 +3,20 @@
 // convenience to get you started writing code faster.
 //
 
-export const isPaired = () => {
-  if ([] || {} || '()'){
-    return true;
+export const isPaired = (input) => {
+  const stack = [];
+
+  for (const bracket of input) {
+    if (bracket === '{' || bracket === '[' || bracket === '(') {
+      stack.push(bracket);
+    } else if (bracket === '}' && stack.pop() !== '{') {
+      return false;
+    } else if (bracket === ']' && stack.pop() !== '[') {
+      return false;
+    } else if (bracket === ')' && stack.pop() !== '(') {
+      return false;
+    }
   }
-  else return false;
+
+  return stack.length === 0;
 };
