@@ -4,9 +4,8 @@
 //
 
 export const twoFer = (friend) => {
-  if (friend === "Do-yun"){
-    return "One for Do-yun, one for me.";
+  if(friend){
+  return `One for ${friend}, one for me.`;
   }
-  else return "One for you, one for me.";
-
+  else return 'One for you, one for me.'
 };
