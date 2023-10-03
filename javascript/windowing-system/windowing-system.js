@@ -34,59 +34,55 @@ export class Position {
 export class ProgramWindow {
 	constructor() {
 		this.screenSize = new Size(800, 600);
-		this.size = new Size(); // Erstellen einer Instanz der Size-Klasse
-		this.position = new Position(); // Erstellen einer Instanz der Position-Klasse
-	}
-	resize(newSize) {
-		// minimum height
-		if (newSize.height < 1) {
-			newSize.height = 1;
-		}
-		// maximum height by screensize
-		else if (newSize.height > this.screenSize.height) {
-			newSize.height = this.screenSize.height;
-		}
-		// maximum height by position
-		else if (newSize.height > (this.screenSize.height - this.position.y)) {
-			(newSize.height = (this.screenSize.height - this.position.y))
-		}
-		// minumum width
-		if (newSize.width < 1) {
-			newSize.width = 1;
-		}
-		// maximum width by screensize
-		else if (newSize.width > this.screenSize.width) {
-			newSize.width = this.screenSize.width;
-		}
-		// maximum width by position
-		else if (newSize.width > (this.screenSize.width - this.position.x)) {
-			newSize.width = (this.screenSize.width - this.position.x);
-		}
-
-		this.size = newSize;
+		this.size = new Size(); // Create an instance of the Size class
+		this.position = new Position(); // Create an instance of the Position class
 	}
 
+	resize(newDimensions) {
+		// Ensure minimum height and width
+		newDimensions.height = Math.max(1, newDimensions.height);
+		newDimensions.width = Math.max(1, newDimensions.width);
+
+		// Limit height by screensize
+		newDimensions.height = Math.min(newDimensions.height, this.screenSize.height);
+
+		// Limit height by position
+		newDimensions.height = Math.min(
+			newDimensions.height,
+			this.screenSize.height - this.position.y
+		);
+
+		// Limit width by screensize
+		newDimensions.width = Math.min(newDimensions.width, this.screenSize.width);
+
+		// Limit width by position
+		newDimensions.width = Math.min(
+			newDimensions.width,
+			this.screenSize.width - this.position.x
+		);
+
+		this.size = newDimensions;
+	}
 
 	move(newPosition) {
-		// x-Position
-		if (newPosition.x < 0) {
-			newPosition.x = 0;
-		}
-		else if (newPosition.x > (this.screenSize.width - this.size.width)) {
-			newPosition.x = (this.screenSize.width - this.size.width);
-		}
+		// Limit x-Position
+		newPosition.x = Math.max(0, newPosition.x);
+		newPosition.x = Math.min(
+			newPosition.x,
+			this.screenSize.width - this.size.width
+		);
 
-		// y-Position
-		if (newPosition.y < 0) {
-			newPosition.y = 0;
-		}
-		else if (newPosition.y > (this.screenSize.height - this.size.height)) {
-			newPosition.y = (this.screenSize.height - this.size.height);
-		}
+		// Limit y-Position
+		newPosition.y = Math.max(0, newPosition.y);
+		newPosition.y = Math.min(
+			newPosition.y,
+			this.screenSize.height - this.size.height
+		);
 
-		// final 
+		// Update final position
 		this.position = newPosition;
 	}
 }
-// Erstellung einer Instanz der ProgramWindow-Klasse
+
+// Create an instance of the ProgramWindow class
 export const newProgramWindow = new ProgramWindow();
