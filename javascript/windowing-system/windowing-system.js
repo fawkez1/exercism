@@ -84,5 +84,16 @@ export class ProgramWindow {
 	}
 }
 
+export function changeWindow(WindowInstance){
+    const newSize = new Size(400,300);
+    WindowInstance.resize(newSize);
+
+    const newPosition = new Position(100, 150);
+    WindowInstance.move(newPosition);
+
+    return WindowInstance;
+    
+}
+
 // Create an instance of the ProgramWindow class
 export const newProgramWindow = new ProgramWindow();
