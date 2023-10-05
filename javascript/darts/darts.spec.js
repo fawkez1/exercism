@@ -17,35 +17,35 @@ describe('Darts', () => {
     expect(score(0, -1)).toEqual(10);
   });
 
-  xtest('Exactly on centre', () => {
+  test('Exactly on centre', () => {
     expect(score(0, 0)).toEqual(10);
   });
 
-  xtest('Near the centre', () => {
+  test('Near the centre', () => {
     expect(score(-0.1, -0.1)).toEqual(10);
   });
 
-  xtest('Just within the inner circle', () => {
+  test('Just within the inner circle', () => {
     expect(score(0.7, 0.7)).toEqual(10);
   });
 
-  xtest('Just outside the inner circle', () => {
+  test('Just outside the inner circle', () => {
     expect(score(0.8, -0.8)).toEqual(5);
   });
 
-  xtest('Just within the middle circle', () => {
+  test('Just within the middle circle', () => {
     expect(score(-3.5, 3.5)).toEqual(5);
   });
 
-  xtest('Just outside the middle circle', () => {
+  test('Just outside the middle circle', () => {
     expect(score(-3.6, -3.6)).toEqual(1);
   });
 
-  xtest('Just within the outer circle', () => {
+  test('Just within the outer circle', () => {
     expect(score(-7.0, 7.0)).toEqual(1);
   });
 
-  xtest('Just outside the outer circle', () => {
+  test('Just outside the outer circle', () => {
     expect(score(7.1, -7.1)).toEqual(0);
   });
 
