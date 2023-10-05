@@ -5,15 +5,15 @@ describe('Darts', () => {
     expect(score(-9, 9)).toEqual(0);
   });
 
-  xtest('On the outer circle', () => {
+  test('On the outer circle', () => {
     expect(score(0, 10)).toEqual(1);
   });
 
-  xtest('On the middle circle', () => {
+  test('On the middle circle', () => {
     expect(score(-5, 0)).toEqual(5);
   });
 
-  xtest('On the inner circle', () => {
+  test('On the inner circle', () => {
     expect(score(0, -1)).toEqual(10);
   });
 
@@ -49,7 +49,7 @@ describe('Darts', () => {
     expect(score(7.1, -7.1)).toEqual(0);
   });
 
-  xtest('Asymmetric position between the inner and middle circles', () => {
+  test('Asymmetric position between the inner and middle circles', () => {
     expect(score(0.5, -4)).toEqual(5);
   });
 });
