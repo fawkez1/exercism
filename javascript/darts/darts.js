@@ -12,6 +12,7 @@ export const score = (x, y) => {
     value: 10, radius: 1
   };
 
+  // satz des pythagoras 
   const distanceFromCenter = Math.sqrt(x * x + y * y);
 
   if (distanceFromCenter <= innerCircle.radius) {
