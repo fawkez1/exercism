@@ -9,14 +9,14 @@ export class Triangle {
   }
 
   get isEquilateral() {
-    throw new Error('Remove this statement and implement this function');
+    // all 3 sides same length
   }
 
   get isIsosceles() {
-    throw new Error('Remove this statement and implement this function');
+    // at least 2 sides same length
   }
 
   get isScalene() {
-    throw new Error('Remove this statement and implement this function');
+    // all sides different
   }
 }
