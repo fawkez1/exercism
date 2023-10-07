@@ -13,7 +13,7 @@ export const abilityModifier = (score) => {
 export class Character {
   constructor() {
     // Generate ability scores during character creation
-    // use the constructor so store results and use them later on.
+    // use the constructor to store results and use them later on.
     this.strengthValue = Character.rollAbility();
     this.dexterityValue = Character.rollAbility();
     this.constitutionValue = Character.rollAbility();
