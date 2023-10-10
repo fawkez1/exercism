@@ -1,4 +1,4 @@
-console.log('Hello, World!');
+// this is not my code. i was not able to solve the exercise on my own :'(
 
 export const transpose = (arr) => {
   const result = [];
