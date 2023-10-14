@@ -1,28 +1,29 @@
-
+1
 export const knapsack = (maximumWeight, items) => {
-  // Erstellt ein Array zur Verfolgung der ausgewählten Gegenstände
+  // Creates an array to track items in backpack
   const selectedItems = [];
 
-  // Sortiert die Gegenstände nach dem Verhältnis von Wert zu Gewicht (Value-to-Weight Ratio)
+  // sorts items (Value-to-Weight Ratio)
   items.sort((a, b) => b.value / b.weight - a.value / a.weight);
 
-  // Initialisiert das aktuelle Gewicht und den Gesamtwert auf 0
+  // initializing weight and value to 0
   let currentWeight = 0;
   let totalValue = 0;
 
-  // Durchlaufe die sortierten Gegenstände
+  // iterate through items
   for (const item of items) {
-    // Überprüfe, ob der Gegenstand noch in den Rucksack passt
+    // check if item fits in backpack
     if (currentWeight + item.weight <= maximumWeight) {
+      // check if item is already in backpack
       if (!selectedItems.includes(item)){
-      // Füge den Gegenstand dem Rucksack hinzu
+      // add item to backpack
       selectedItems.push(item);
       currentWeight += item.weight;
       totalValue += item.value;
       }
     }
   }
-  // Rückgabe des Gesamtwerts
+  // return value
   return totalValue;
   
 };
