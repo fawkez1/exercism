@@ -28,7 +28,10 @@ export function removeDuplicates(playlist) {
  * @returns {boolean} whether the track is in the playlist
  */
 export function hasTrack(playlist, track) {
-  throw new Error('Please implement the hasTrack function');
+  if (playlist.includes(track)){
+    return true;
+  }
+  else return false;
 }
 
 /**
@@ -39,7 +42,10 @@ export function hasTrack(playlist, track) {
  * @returns {string[]} new playlist
  */
 export function addTrack(playlist, track) {
-  throw new Error('Please implement the addTrack function');
+  if (!playlist.includes(track)){
+  playlist.push(track);
+  }
+  return playlist;
 }
 
 /**
@@ -50,7 +56,11 @@ export function addTrack(playlist, track) {
  * @returns {string[]} new playlist
  */
 export function deleteTrack(playlist, track) {
-  throw new Error('Please implement the deleteTrack function');
+  let index = playlist.indexOf(track);
+  if (index !== -1){
+    playlist.splice(index, 1);
+  }
+  return playlist;
 }
 
 /**
@@ -59,6 +69,22 @@ export function deleteTrack(playlist, track) {
  * @param {string[]} playlist
  * @returns {string[]} list of artists
  */
+// Function to list artists in a playlist
 export function listArtists(playlist) {
-  throw new Error('Please implement the listArtists function');
-}
+  // Empty array to store artist names
+  let artistPlaylist = [];
+ 
+  // Iterate through each song in the playlist
+  playlist.forEach(song => {
+      // Split the song title by the artist name
+      let splitSong = song.split(' - ');
+ 
+      // Add the artist name to the artistPlaylist array
+      artistPlaylist.push(splitSong[1]);
+  });
+  // remove duplicaes by transforming the array into a set
+  artistPlaylist = [...new Set(artistPlaylist)];
+ 
+  // Return the artistPlaylist array
+  return artistPlaylist;
+ }
