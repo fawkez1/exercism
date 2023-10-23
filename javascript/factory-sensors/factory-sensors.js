@@ -50,19 +50,35 @@ export function reportOverheating(temperature) {
  * }} actions
  * @throws {ArgumentError|OverheatingError|Error}
  */
-export function monitorTheMachine(actions){
-try {
-  actions.check();
-} catch (error) {
-  if (error instanceof ArgumentError){
-    actions.alertDeadSensor();
-  }
-  else if (error instanceof OverheatingError){
-    actions.alertOverheating(error.temperature);
-    }
-  }
+/**
+ * Triggers the needed action depending on the result of the machine check.
+ *
+ * @param {{
+* check: function,
+* alertDeadSensor: function,
+* alertOverheating: function,
+* shutdown: function
+* }} actions
+* @throws {ArgumentError|OverheatingError|Error}
+*/
+export function monitorTheMachine(actions) {
+ try {
+   actions.check();
+ } catch (error) {
+   if (error instanceof ArgumentError) {
+     actions.alertDeadSensor();
+   } else if (error instanceof OverheatingError) {
+     if (error.temperature > 600) {
+       actions.shutdown();
+     } else {
+       actions.alertOverheating(error.temperature);
+     }
+   } else {
+     // If it's an unknown error, rethrow it
+     throw error;
+   }
+ }
 }
-
 
 
 
