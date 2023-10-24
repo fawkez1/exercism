@@ -1,8 +1,4 @@
 /// <reference path="./global.d.ts" />
-
-import { reject } from "core-js/fn/promise";
-import { resolve } from "path";
-
 // @ts-check
 //
 // The lines above enable type checking for this file. Various IDEs interpret
@@ -30,20 +26,10 @@ export class TranslationService {
    * @param {string} text
    * @returns {Promise<string>}
    */
-  free(text){
-    return this.api
-    .fetch(text)
-    .then((translation) => {
-      if (translation !== null && translation !== undefined) {
-        return translation;
-      } else {
-        throw new Error(`Translation not found for text: ${text}`);
-      }
-    })
-    .catch((error) => {
-      throw error; // Forward the error from the translation API.
-    });
-}
+  free(text) {
+    return this.api.fetch(text)
+    .then((resolve) => resolve.translation);
+  }
 
   /**
    * Batch translates the given texts using the free service.
