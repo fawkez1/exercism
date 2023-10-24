@@ -28,7 +28,7 @@ export class TranslationService {
    */
   free(text) {
     return this.api.fetch(text)
-    .then((resolve) => resolve.translation);
+    .then((result) => result.translation);
   }
 
   /**
