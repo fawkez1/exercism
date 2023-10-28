@@ -69,30 +69,35 @@ export function sandwichTrick(deck) {
   const originalDeck = [...deck];
 
   // 1. Remove the first card from the deck.
-  let firstCard = deck.shift();
+  // the splice method gives back an array, which must me converted to a number
+  let firstCardArray = deck.splice(0, 1);
+  let firstCardString = firstCardArray.join('');
+  let firstCard = parseInt(firstCardString, 10);
 
   // 2. Remove the last card from the deck.
-  let lastCard = deck.pop();
+  // the splice method gives back an array, which must me converted to a number
+  let lastCardArray = deck.splice(deck.length -1, 1);
+  let lastCardString = lastCardArray.join('');
+  let lastCard = parseInt(lastCardString, 10);
 
-  // Create a deck without the first and last cards.
-  let deckWithoutFirstAndLast = deck.filter((item) => item !== firstCard && item !== lastCard);
-
+  //debug
+  console.log(`Deck without first and last: ${deck} from original: ${originalDeck}`)
+  
   // Calculate the middle position ONE
-  let middlePositionOne = Math.floor(deckWithoutFirstAndLast.length / 2);
+  let middlePositionOne = Math.floor(deck.length / 2);
 
   // Calculate the middle position TWO
   let middlePositionTwo = middlePositionOne + 1;
 
   // Insert the last card at the first middle position
-  deckWithoutFirstAndLast.splice(middlePositionOne, 0, lastCard);
+  deck.splice(middlePositionOne, 0, lastCard);
+  console.log(`inserting the last card at the first middle position ${deck}`)
 
   // Insert the first card at the second middle position
-  deckWithoutFirstAndLast.splice(middlePositionTwo, 0, firstCard);
+  deck.splice(middlePositionTwo, 0, firstCard);
+  console.log(`inserting the first card at the second middle position ${deck}`)
 
-  // Debugging for the middle positions
-  console.log(`new Deck: ${deckWithoutFirstAndLast} from ${originalDeck}`);
-
-  return deckWithoutFirstAndLast;
+  return deck;
 }
 
 
