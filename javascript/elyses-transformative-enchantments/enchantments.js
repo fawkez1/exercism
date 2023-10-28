@@ -65,38 +65,38 @@ export function middleTwo(deck) {
  */
 
 export function sandwichTrick(deck) {
-  // copy of original deck debugging
+  // Copy of the original deck for debugging
   const originalDeck = [...deck];
+
   // 1. Remove the first card from the deck.
   let firstCard = deck.shift();
-  //console.log(`first card: ${firstCard} of ${originalDeck}`)
 
   // 2. Remove the last card from the deck.
   let lastCard = deck.pop();
 
-  // Calculate the middle positions.
-  let middlePositionOne = Math.floor(deck.length / 2);
-  let middlePositionTwo = Math.floor(deck.length / 2 +1);
-  console.log(`middleOne: ${middlePositionOne} in ${deck}`);
-  console.log(`middleTwo: ${middlePositionTwo} in ${deck}`);
-
-  // 3. Create a deck without the first and last cards.
+  // Create a deck without the first and last cards.
   let deckWithoutFirstAndLast = deck.filter((item) => item !== firstCard && item !== lastCard);
-  let originalDeckWithoutFirstAndLast = [...deckWithoutFirstAndLast]
-  //console.log(`Deck without first and last: ${deckWithoutFirstAndLast} from ${originalDeck}`)
 
-  // 4. Insert first card at second middle position
-  deckWithoutFirstAndLast.splice(middlePositionTwo, 0, originalDeck[0]);
-  //console.log(`Insert first card at second middle:${deckWithoutFirstAndLast} from ${originalDeckWithoutFirstAndLast} `)
-  
+  // Calculate the middle position ONE
+  let middlePositionOne = Math.floor(deckWithoutFirstAndLast.length / 2);
 
-  // 5. Insert last card at first middle position
-  deckWithoutFirstAndLast.splice(middlePositionOne, 0, originalDeck[originalDeck.length - 1]);
-  
+  // Calculate the middle position TWO
+  let middlePositionTwo = middlePositionOne + 1;
+
+  // Insert the last card at the first middle position
+  deckWithoutFirstAndLast.splice(middlePositionOne, 0, lastCard);
+
+  // Insert the first card at the second middle position
+  deckWithoutFirstAndLast.splice(middlePositionTwo, 0, firstCard);
+
+  // Debugging for the middle positions
+  console.log(`new Deck: ${deckWithoutFirstAndLast} from ${originalDeck}`);
 
   return deckWithoutFirstAndLast;
-
 }
+
+
+
 
 /**
  * Removes every card from the deck except 2s.
