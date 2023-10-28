@@ -45,7 +45,15 @@ export function threeOfEachThree(deck) {
  * @returns {number[]} deck with only two middle cards
  */
 export function middleTwo(deck) {
-  throw new Error('Implement the middleTwo function');
+  // use slice to delete the first 4 objects
+  // use slice to delete the last 4 objects
+  // then push them back into an array and return it
+  const firstFour = [...deck].splice(0, 4);
+  const lastFour = [...deck].splice(6, 4);
+  let deckMinusFirstFour = deck.filter((item) => !firstFour.includes(item));
+  let deckMinusLastFour = deckMinusFirstFour.filter((item) => !lastFour.includes(item));
+  
+  return deckMinusLastFour;
 }
 
 /**
@@ -57,7 +65,37 @@ export function middleTwo(deck) {
  */
 
 export function sandwichTrick(deck) {
-  throw new Error('Implement the sandwichTrick function');
+  // copy of original deck debugging
+  const originalDeck = [...deck];
+  // 1. Remove the first card from the deck.
+  let firstCard = deck.shift();
+  //console.log(`first card: ${firstCard} of ${originalDeck}`)
+
+  // 2. Remove the last card from the deck.
+  let lastCard = deck.pop();
+
+  // Calculate the middle positions.
+  let middlePositionOne = Math.floor(deck.length / 2);
+  let middlePositionTwo = Math.floor(deck.length / 2 +1);
+  console.log(`middleOne: ${middlePositionOne} in ${deck}`);
+  console.log(`middleTwo: ${middlePositionTwo} in ${deck}`);
+
+  // 3. Create a deck without the first and last cards.
+  let deckWithoutFirstAndLast = deck.filter((item) => item !== firstCard && item !== lastCard);
+  let originalDeckWithoutFirstAndLast = [...deckWithoutFirstAndLast]
+  //console.log(`Deck without first and last: ${deckWithoutFirstAndLast} from ${originalDeck}`)
+
+  // 4. Insert first card at second middle position
+  deckWithoutFirstAndLast.splice(middlePositionTwo, 0, originalDeck[0]);
+  //console.log(`Insert first card at second middle:${deckWithoutFirstAndLast} from ${originalDeckWithoutFirstAndLast} `)
+  
+
+  // 5. Insert last card at first middle position
+  deckWithoutFirstAndLast.splice(middlePositionOne, 0, originalDeck[originalDeck.length - 1]);
+  
+
+  return deckWithoutFirstAndLast;
+
 }
 
 /**
