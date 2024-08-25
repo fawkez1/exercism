@@ -20,21 +20,13 @@ export function seeingDouble(deck) {
  * @returns {number[]} deck with triplicate 3s
  */
 export function threeOfEachThree(deck) {
-  let result = [];
-
-  deck.forEach((value) => {
-    result.push(value);
-    if (value === 3) {
-      result.push(3);
-      result.push(3);
-    }
-  });
+  return deck.flatMap((value) => value === 3 ? [value, 3, 3] : [value]);
+}
 
   //result.sort((a, b) => a - b); // Sort in ascending order
   // test didnt work when result is sorted
 
-  return result;
-}
+ 
 
 /**
  * Extracts the middle two cards from a deck.
