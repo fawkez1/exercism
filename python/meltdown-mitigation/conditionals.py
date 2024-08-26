@@ -46,7 +46,8 @@ def fail_safe(temperature, neutrons_produced_per_second, threshold):
         return 'LOW'
     elif 0.9 * threshold <= power <= 1.1 * threshold:
         return 'NORMAL'
-    
+    else:
+        return 'DANGER'
     """Assess and return status code for the reactor.
 
     :param temperature: int or float - value of the temperature in kelvin.
