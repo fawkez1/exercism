@@ -103,7 +103,12 @@ def is_blackjack(card_one, card_two):
     3.  '2' - '10' = numerical value.
     """
 
-    pass
+    if (card_one == 'A') and value_of_card(card_two) == 10:
+        return True
+    elif (card_two == 'A') and value_of_card(card_one) == 10:
+        return True
+    else:
+        return False
 
 
 def can_split_pairs(card_one, card_two):
@@ -112,8 +117,17 @@ def can_split_pairs(card_one, card_two):
     :param card_one, card_two: str - cards dealt.
     :return: bool - can the hand be split into two pairs? (i.e. cards are of the same value).
     """
+    # Calculate the values of the cards
+    card_one_value = value_of_card(card_one)
+    card_two_value = value_of_card(card_two)
 
-    pass
+    #scenario for cards 1 - K
+    if card_one_value == card_two_value:
+        return True
+    elif card_one or card_two == 'A':
+        return False
+    elif card_one and card_two == 'A':
+        return True
 
 
 def can_double_down(card_one, card_two):
@@ -123,4 +137,11 @@ def can_double_down(card_one, card_two):
     :return: bool - can the hand can be doubled down? (i.e. totals 9, 10 or 11 points).
     """
 
-    pass
+    # Calculate the values of the cards
+    card_one_value = value_of_card(card_one)
+    card_two_value = value_of_card(card_two)
+    total_value = card_one_value + card_two_value
+
+     # Check if the total value is 9, 10, or 11
+    return total_value in [9, 10, 11]
+    
