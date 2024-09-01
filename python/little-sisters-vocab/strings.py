@@ -8,7 +8,7 @@ def add_prefix_un(word):
     :return: str - of root word prepended with 'un'.
     """
 
-    pass
+    return 'un' + word
 
 
 def make_word_groups(vocab_words):
@@ -25,20 +25,34 @@ def make_word_groups(vocab_words):
     For example: list('en', 'close', 'joy', 'lighten'),
     produces the following string: 'en :: enclose :: enjoy :: enlighten'.
     """
-
-    pass
+    # Nimm das erste Wort als Präfix
+    prefix = vocab_words[0]
+    
+    # Kombiniere das Präfix mit den restlichen Wörtern
+    combined_words = [prefix + word for word in vocab_words[1:]]
+    
+    # Verbinde das Präfix und die kombinierten Wörter mit ' :: '
+    result = ' :: '.join([prefix] + combined_words)
+    
+    return result
 
 
 def remove_suffix_ness(word):
-    """Remove the suffix from the word while keeping spelling in mind.
+    """Remove the suffix 'ness' from the word while keeping spelling in mind.
 
-    :param word: str - of word to remove suffix from.
-    :return: str - of word with suffix removed & spelling adjusted.
+    :param word: str - The word to remove the suffix from.
+    :return: str - The word with the suffix removed & spelling adjusted.
 
     For example: "heaviness" becomes "heavy", but "sadness" becomes "sad".
     """
+    # Entferne den Suffix 'ness'
+    base_word = word[:-4]  # Nimmt das Wort ohne die letzten 4 Zeichen ('ness')
 
-    pass
+    # Überprüfe, ob das Wort mit einem 'i' endet und ersetze es durch 'y'
+    if base_word.endswith('i'):
+        return base_word[:-1] + 'y'
+    else:
+        return base_word
 
 
 def adjective_to_verb(sentence, index):
