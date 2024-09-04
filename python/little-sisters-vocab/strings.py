@@ -64,5 +64,18 @@ def adjective_to_verb(sentence, index):
 
     For example, ("It got dark as the sun set.", 2) becomes "darken".
     """
+    
+    
+    
+    # Split the sentence into a list of words
+    sentence_words = sentence.split()
 
-    pass
+# Extract the word at the specified index
+    extracted_word = sentence_words[index]
+
+# Remove unnecessary punctuation signs from the extracted word
+    extracted_word = extracted_word.strip('., ')
+
+# Append 'en' to the end of the extracted word and return the result
+    return extracted_word + 'en'
+    
